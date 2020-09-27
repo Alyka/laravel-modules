@@ -25,6 +25,6 @@ class $CLASS$
      */
     public function handle($event)
     {
-        //
+        $model = $event->model;
     }
 }

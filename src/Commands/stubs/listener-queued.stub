@@ -28,6 +28,6 @@ class $CLASS$ implements ShouldQueue
      */
     public function handle($SHORTEVENTNAME$ $event)
     {
-        //
+        $model = $event->model;
     }
 }

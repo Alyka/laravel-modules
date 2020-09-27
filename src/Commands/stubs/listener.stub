@@ -26,6 +26,6 @@ class $CLASS$
      */
     public function handle($SHORTEVENTNAME$ $event)
     {
-        //
+        $model = $event->model;
     }
 }

@@ -78,8 +78,12 @@ class ListenerMakeCommand extends GeneratorCommand
     protected function getEventName(Module $module)
     {
         $eventPath = GenerateConfigReader::read('event');
+		
+		$classNamespace = $this->getClassNamespace($module);
+		
+		$generatedEventNamespace = str_replace('\Listeners', '', $classNamespace);
 
-        return $this->getClassNamespace($module) . "\\" . $eventPath->getPath() . "\\" . $this->option('event');
+        return $generatedEventNamespace . "\\" . $eventPath->getPath() . "\\" . $this->option('event');
     }
 
     protected function getDestinationFilePath()

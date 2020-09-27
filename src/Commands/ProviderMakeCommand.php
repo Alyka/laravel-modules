@@ -64,6 +64,7 @@ class ProviderMakeCommand extends GeneratorCommand
     {
         return [
             ['master', null, InputOption::VALUE_NONE, 'Indicates the master service provider', null],
+            ['event', null, InputOption::VALUE_NONE, 'Indicates the event service provider', null],
         ];
     }
 
@@ -72,7 +73,7 @@ class ProviderMakeCommand extends GeneratorCommand
      */
     protected function getTemplateContents()
     {
-        $stub = $this->option('master') ? 'scaffold/provider' : 'provider';
+        $stub = $this->option('master') ? 'scaffold/provider' : ($this->option('event') ? 'event-provider' : 'provider');
 
         /** @var Module $module */
         $module = $this->laravel['modules']->findOrFail($this->getModuleName());

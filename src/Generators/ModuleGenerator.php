@@ -387,6 +387,11 @@ class ModuleGenerator extends Generator
                 'module' => $this->getName(),
                 '--master' => true,
             ]);
+			$this->console->call('module:make-provider', [
+                'name' => 'EventServiceProvider',
+                'module' => $this->getName(),
+                '--event' => true,
+            ]);
             $this->console->call('module:route-provider', [
                 'module' => $this->getName(),
             ]);

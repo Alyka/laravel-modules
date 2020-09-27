@@ -30,14 +30,6 @@ class MigrateRefreshCommand extends Command
      */
     public function handle() : int
     {
-        $module = $this->argument('module');
-
-        if ($module && !$this->getModuleName()) {
-            $this->error("Module [$module] does not exists.");
-
-            return E_ERROR;
-        }
-
         $this->call('module:migrate-reset', [
             'module' => $this->getModuleName(),
             '--database' => $this->option('database'),
@@ -89,12 +81,12 @@ class MigrateRefreshCommand extends Command
     {
         $module = $this->argument('module');
 
-        if (!$module) {
-            return null;
-        }
-
         $module = app('modules')->find($module);
 
-        return $module ? $module->getStudlyName() : null;
+        if ($module === null) {
+            return $module;
+        }
+
+        return $module->getStudlyName();
     }
 }
